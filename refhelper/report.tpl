@@ -12,7 +12,6 @@
                 font-size: 1em;
             }
             a:link, a:visited {
-                font-weight: bold;
                 color: #2AA198;
                 border-bottom: 1px solid #2AA198;
                 text-decoration: none;
@@ -29,12 +28,15 @@
                 border-collapse: collapse;
                 margin-bottom: 30px;
             }
+            table a {
+                font-weight: bold;
+            }
             th {
                 text-align: left;
                 font-weight: normal;
-                font-style: italic;
                 color: #859900;
                 font-size: 0.7em;
+                padding-bottom: 15px;
             }
             tr td:nth-child(3), tr td:nth-child(4) {
                 width: 30px;
@@ -42,11 +44,21 @@
             td {
                 padding: 5px 0;
             }
+            tr:hover td {
+                background: rgba(0, 0, 0, 0.05);
+            }
             .datetime {
                 font-style: italic;
                 font-size: 0.6em;
                 color: #93A1A1;
                 margin: 0;
+            }
+            .datetime a:link, .datetime a:visited {
+                color: #93A1A1;
+                border-bottom: 1px solid #e1e1e1;
+            }
+            .datetime a:hover, .datetime a:active {
+                border: 0;
             }
         </style>
     </head>
@@ -79,25 +91,21 @@
                 </tr>{% endfor %}
             </tbody>
         </table>
-        <p class="datetime">{{ datetime }}. Firstly, open target project in IntelliJ idea.
-            Then click by each link will open code in this IDE.</p>
+        <p class="datetime">
+            {{ datetime }}.
+            <a href="https://github.com/vera-l/python-refhelper">pyrefhelper</a> v{{ version }}.
+            Firstly, open target project with IntelliJ Idea.
+            After that you can open target code by click on links.
+        </p>
         <script>
             (function(){
-                let fakeImg = new Image();
                 document.querySelector('.results').addEventListener('click', function(e) {
-                    let current = e.target;
-                    while(current) {
-                         if(current.classList.contains('idea-link')) {
-                            let href = current.href;
-                            fakeImg.src = href;
+                    const current = e.target.closest('.idea-link');
+                    if (current) {
+                        fetch(current.href).then(function () {
                             current.parentNode.querySelector('.idea-opened').checked = true;
-                            break;
-                        };
-                        if(current !== e.target) {
-                            break;
-                        }
-                        current = current.parentNode;
-                    }
+                        });
+                    };
                     e.preventDefault();
                 })
             })();

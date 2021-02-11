@@ -1,24 +1,28 @@
 # Python refactoring helper
 
-> A tool for easy refactoring
+> A tool for easy refactoring. It was originally written to find all 
+> division and rounding cases for python 2 -> 3 transition, but 
+> can be useful for other refactoring tasks.
 
-1. Find all python-files in some path (usually, your project)
-2. Parse each file as AST
-3. Find in AST cases for current task
-4. Make html-report with all using cases, open it in browser
-5. By click on each link open this file in IntelliJ idea at current linenumber
+How the tool works:
+
+1. It finds all python-files in some path (usually, your project)
+2. Parses each file as AST
+3. Finds all cases for current task in AST
+4. Makes html-report with all using cases, then opens it in browser
+5. By click on each link you can open this file in IntelliJ idea at current linenumber
 
 ### Installing:
 
-```shell
+```console
 git clone https://github.com/vera-l/python-refhelper.git
 cd python-refhelper
-python setup.py install --user
+python3 setup.py install --user
 ```
 
 ### Using:
 
-```
+```console
 pyrefhelper [path] [task=list|division|rounding]
 ```
 

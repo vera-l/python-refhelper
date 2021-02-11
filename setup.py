@@ -1,18 +1,19 @@
-#! /usr/bin/python
-# coding: utf8
+#! /usr/bin/python3
 
 from setuptools import setup
 
+from refhelper.version import version
+
 setup(
     name='refhelper',
-    version='0.1',
+    version=version,
     description='Python refactoring helper',
     long_description='A tool for easy refactoring with some tasks',
     classifiers=[
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.7',
     ],
-    keywords='profiler',
+    keywords='refactoring tool',
     url='http://iamvera.com',
     author='Vera Lobacheva',
     author_email='vera@iamvera.com',

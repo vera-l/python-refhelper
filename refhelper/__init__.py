@@ -1,18 +1,21 @@
-# coding: utf-8
-
 import sys
-import tasks
-import finder
+from . import tasks
+from . import finder
+from .tasks import TASKS
+
+
+AVAILABLE_TASKS = ' | '.join(TASKS.keys())
 
 
 def get_target_path():
     if len(sys.argv) < 3:
-        sys.exit('Call format is "pyrefhelper [path] [task=list|division|rounding]"')
+        sys.exit(f'Execute: "pyrefhelper [path] [task={AVAILABLE_TASKS}]"')
 
     if sys.argv[2] not in tasks.TASKS:
-        sys.exit('Task name is wrong. Available values is "list" and "division"')
+        sys.exit(f'Task name is wrong. Available values is {AVAILABLE_TASKS}')
 
     return sys.argv[1], sys.argv[2]
+
 
 def main():
     target_path, task_name = get_target_path()
