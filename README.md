@@ -1,7 +1,7 @@
 # Python refactoring helper
 
-> A tool for easy refactoring. It was originally written to find all 
-> division and rounding cases for python 2 -> 3 transition, but 
+> A tool for easy refactoring. It was originally written to find all
+> division and rounding cases for python 2 -> 3 transition, but
 > can be useful for other refactoring tasks.
 
 How the tool works:
@@ -23,15 +23,16 @@ python3 setup.py install --user
 ### Using:
 
 ```console
-pyrefhelper [path] [task=list|division|rounding]
+pyrefhelper [path] [task=list|division|rounding|callback]
 ```
 
 ### Available tasks:
 
-* `list` - get all python files
-* `division` - find division cases in all python files
-* `rounding` - find rounding cases in all python files
-* `your_task` - you can add own tasks
+-   `list` - get all python files
+-   `division` - find division cases in all python files
+-   `rounding` - find rounding cases in all python files
+-   `callback` - find tornado callback cases in all python files
+-   `your_task` - you can add own tasks
 
 ### Report example:
 
