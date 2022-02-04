@@ -43,10 +43,10 @@ NODE_MATCHERS = {
 def _py_list(files, target_path):
     result = []
 
-    for a in files:
+    for file in files:
         result.append(
             ReportItem(
-                file=os.path.relpath(a, target_path),
+                file=file,
                 line='-',
                 column='-'
             )
@@ -69,7 +69,7 @@ def _find_in_ast(node_mather, files, target_path):
                     if node_mather(node):
                         result.append(
                             ReportItem(
-                                file=os.path.relpath(file_path, target_path),
+                                file=file_path,
                                 line=node.lineno,
                                 column=node.col_offset
                             )
